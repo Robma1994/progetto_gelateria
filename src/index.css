@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +15,48 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/*GENERAL*/
+
+/*CONTAINER*/
+.my-container {
+  width: 100%;
+  min-height: 1000px;
+}
+.my-container-fluid {
+  width: 80%;
+  margin: 0 auto;
+}
+.container-img {
+  max-width: 180px;
+  max-height: 160px;
+}
+.container-img > img {
+  width: 100%;
+  height: 100%;
+}
+/*BUTTON PRICE*/
+.btn-price {
+  background-color: blue;
+  height: 25px;
+  padding: 0 9px 0 9px;
+  border-radius: 4px;
+}
+.btn-choice {
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom: 3px solid blue;
+}
+/*HEIGHT*/
+.my-h-100 {
+  height: 100px;
+}
+/*COLOR*/
+.color-bg-cont {
+  background-color: #90e0ef; 
+
+}
+.color-bg-card {
+  background-color: #caf0f8;
 }

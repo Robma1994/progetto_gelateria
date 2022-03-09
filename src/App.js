@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css' ;
+import Header from './Components/Header';
+import ContainerCard from './Components/ContainerCard';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+let url = 'https://react-corso-api.netlify.app/.netlify/functions/gelateria';
 
-function App() {
+function App() { 
+  let [iceCream, setIceCream ] = useState([]);
+  let [isLoading, setIsLoading] = useState(true);
+  let [isError, setIsError] = useState(false);
+  let getData = async () => {
+    setIsLoading(true);
+    setIsError(false)
+    try {
+      let response = await axios.get(url);
+      setIceCream(response.data.data);
+    } catch (error) {
+      setIsError(true)
+    }
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+  
+  if(isLoading){
+    return <h1>Sto caricando</h1>
+  } else if(isError) {
+    return <h1>Ops, errore!</h1>
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <div className="my-container color-bg-cont">
+        <ContainerCard {...iceCream}/> 
+      </div>
     </div>
   );
 }
